@@ -2,6 +2,16 @@ import sys
 
 
 def evaluate_str(eval_string):
+    """
+        evaluate string passed as parameter
+        print :
+            -total char in string
+            -total upper case letter in string
+            -total lower case letter in string
+            -total punction character in string
+            -total space in string
+            -total digit character in string
+    """
 
     punctuation_marks = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     length = 0
@@ -35,8 +45,8 @@ if __name__ == "__main__":
 
     try:
         assert len(sys.argv) == 2
+        string = sys.argv[1]
     except AssertionError:
-        print("Please provide one string to assert")
-        exit()
+        string = input("What is the text to count\n")
 
-    evaluate_str(sys.argv[1])
+    evaluate_str(string)

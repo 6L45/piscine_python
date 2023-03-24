@@ -12,4 +12,5 @@ if __name__ == "__main__":
         print("Usage: python filterstring.py <string> <unsigned integer>")
         exit(1)
 
-    print(ft_filter.ft_filter(lambda x: len(x) == int(sys.argv[2]), sys.argv[1].split()))
+    print(ft_filter.ft_filter(lambda x: len(x) == int(sys.argv[2]),
+                              sys.argv[1].split()))

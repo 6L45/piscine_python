@@ -1,15 +1,18 @@
-import time
-from tqdm import tqdm
+# from tqdm import tqdm
+# import time
 
 
 def ft_tqdm(lst: range) -> None:
+    """
+        Decorate an iterable with a progress bar.
+    """
+
     total = len(lst)
-    
     for i, item in enumerate(lst, 1):
         advance = int(i * 100 / total)
         remains = 99 - advance
         percentage_str = str(f"{i * 100 / total:.0f}")
-    
+
         print(percentage_str + "%", end="")
         print(" " * (3 - len(percentage_str)), end="")
         print("|[", end="")
@@ -22,11 +25,10 @@ def ft_tqdm(lst: range) -> None:
         yield item
     print("")
 
-
-if __name__ == "__main__":
-    # example usage
-    for _ in ft_tqdm(range(27)):
-        time.sleep(0.1)
-
-    for _ in tqdm(range(10)):
-        time.sleep(0.1)
+# if __name__ == "__main__":
+#     # example usage
+#     for _ in ft_tqdm(range(27)):
+#         time.sleep(0.1)
+#
+#     for _ in tqdm(range(10)):
+#         time.sleep(0.1)
