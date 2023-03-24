@@ -14,7 +14,6 @@ def aff_pop(df: pd.DataFrame, df2: pd.DataFrame):
 
         newdf = pd.concat([df.loc[:, "1900"], df2.loc[:, "1900"]], axis=1)
         newdf.columns = ["expectancy", "product"]
-        newdf.index.name = "country"
 
         newdf.plot(kind="scatter", x="product", y="expectancy")
 

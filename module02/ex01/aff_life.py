@@ -25,9 +25,6 @@ def aff_life(df: pd.DataFrame):
     except KeyError as e:
         print("KeyError", e)
         exit()
-    except KeyboardInterrupt:
-        print("\rquit")
-        exit()
 
     # TITLES GRAPH X AND Y
     plt.title("France Life expectancy Projections")
@@ -36,7 +33,12 @@ def aff_life(df: pd.DataFrame):
 
     # CREATE AND SHOW
     plt.plot(country_data.index, country_data.values)
-    plt.show()
+
+    try:
+        plt.show()
+    except KeyboardInterrupt:
+        print("\rquit")
+        exit()
 
 
 if __name__ == "__main__":
