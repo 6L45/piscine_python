@@ -77,29 +77,23 @@ if __name__ == "__main__":
                     user_input_list = user_input.split(" ")
 
                     if len(user_input_list) != 5:
-                        print("arguments missing")
+                        print("bad arguments")
 
                     else:
-                        if len(user_input_list) > 0:
-                            x1 = int(user_input_list[0].strip())
-                        if len(user_input_list) > 1:
-                            x2 = int(user_input_list[1].strip())
+                        x1 = int(user_input_list[0].strip())
+                        x2 = int(user_input_list[1].strip())
+                        y1 = int(user_input_list[2].strip())
+                        y2 = int(user_input_list[3].strip())
 
-                        if len(user_input_list) > 2:
-                            y1 = int(user_input_list[2].strip())
-                        if len(user_input_list) > 3:
-                            y2 = int(user_input_list[3].strip())
-
-                        if len(user_input_list) > 4:
-                            if user_input_list[4].strip() == "left":
-                                direct = 1
-                            elif user_input_list[4].strip() == "right":
-                                direct = -1
-                            elif user_input_list[4].strip() == "null":
-                                direct = 0
-                            else:
-                                print("ErrorValue: direction = right or left")
-                                err = True
+                        if user_input_list[4].strip() == "left":
+                            direct = 1
+                        elif user_input_list[4].strip() == "right":
+                            direct = -1
+                        elif user_input_list[4].strip() == "null":
+                            direct = 0
+                        else:
+                            print("ErrorValue: direction = right or left")
+                            err = True
 
                         if y2 <= y1 or y2 < 0 or y1 < 0:
                             print(f"ErrorValue: y1({y1}) / y2({y2}): \
@@ -122,8 +116,8 @@ x1({x1}) / x2({x2})")
                         if not err:
                             zoom(img_data, y1, x1, y2, x2, path, direct)
 
-                print(f"\nplease enter: <x1> <x2> max {width} \
-/ <y1> <y2> max {height} / <direction> (right or left)")
+                print(f"\nplease enter: <x1> <x2> max {width - 1} \
+/ <y1> <y2> max {height - 1} / <direction> (right or left)")
                 print("or enter dflt for default values")
 
     except (KeyboardInterrupt, EOFError):

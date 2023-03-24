@@ -61,50 +61,50 @@ if __name__ == "__main__":
                 if user_input == "quit":
                     exit()
 
-                user_input_list = user_input.split(" ")
+                if user_input == "dflt":
 
-                if len(user_input_list) > 0:
-                    x1 = int(user_input_list[0].strip())
-                if len(user_input_list) > 1:
-                    x2 = int(user_input_list[1].strip())
+                    x1 = int(width / 3)
+                    y1 = int(height / 3)
+                    x2 = int(x1 * 2)
+                    y2 = int(y2 * 2)
 
-                if len(user_input_list) > 2:
-                    y1 = int(user_input_list[2].strip())
-                if len(user_input_list) > 3:
-                    y2 = int(user_input_list[3].strip())
-
-                if len(user_input_list) > 4:
-                    print("too many arguments")
-                    err = True
-
-                if y2 <= y1 or y2 < 0 or y1 < 0:
-                    print(f"ErrorValue: y1({y1}) / y2({y2}): \
-y2 <= y1 or y2 <= 0 or y1 <= 0")
-                    err = True
-                if y1 >= height or y2 >= height:
-                    print(f"ErrorValue: max height = {height}: \
-y1({y1}) /  y2({y2})")
-                    err = True
-
-                if x2 <= x1 or y2 < 0 or y1 < 0:
-                    print(f"ErrorValue: x1({x1}) / x2({x2}): \
-x2 <= x1 or x2 <= 0 or x1 <= 0")
-                    err = True
-                if x1 >= width or x2 >= width:
-                    print(f"ErrorValue: max width = {width}: \
-x1({x1}) / x2({x2})")
-                    err = True
-
-                if not err:
                     zoom(img_data, y1, x1, y2, x2, path)
 
-                print(f"\nplease enter: <x1> <x2> max {width} \
-/ <y1> <y2> max {height}")
+                else:
+                    user_input_list = user_input.split(" ")
+                    if len(user_input_list) != 4:
+                        print("bad arguments")
 
-                x1 = 0
-                y1 = 0
-                x2 = width - 1
-                y1 = height - 1
+                    else:
+
+                        x1 = int(user_input_list[0].strip())
+                        x2 = int(user_input_list[1].strip())
+                        y1 = int(user_input_list[2].strip())
+                        y2 = int(user_input_list[3].strip())
+
+                        if y2 <= y1 or y2 < 0 or y1 < 0:
+                            print(f"ErrorValue: y1({y1}) / y2({y2}): \
+y2 <= y1 or y2 <= 0 or y1 <= 0")
+                            err = True
+                        if y1 >= height or y2 >= height:
+                            print(f"ErrorValue: max height = {height}: \
+y1({y1}) /  y2({y2})")
+                            err = True
+
+                        if x2 <= x1 or y2 < 0 or y1 < 0:
+                            print(f"ErrorValue: x1({x1}) / x2({x2}): \
+x2 <= x1 or x2 <= 0 or x1 <= 0")
+                            err = True
+                        if x1 >= width or x2 >= width:
+                            print(f"ErrorValue: max width = {width}: \
+x1({x1}) / x2({x2})")
+                            err = True
+
+                        if not err:
+                            zoom(img_data, y1, x1, y2, x2, path)
+
+                        print(f"\nplease enter: <x1> <x2> max {width} \
+/ <y1> <y2> max {height}")
 
     except (KeyboardInterrupt, EOFError):
         print("\rquit")
