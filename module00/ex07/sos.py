@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import sys
 
 
@@ -75,11 +77,8 @@ def sos(string):
 
     result = ""
     try:
-        for i, c in enumerate(string):
-            assert c in NESTED_MORSE
-            result += NESTED_MORSE[c]
-            if i != len(string) - 1:
-                result += " "
+        assert all(c in NESTED_MORSE for c in string)
+        result = " ".join(NESTED_MORSE[c] for c in string)
     except AssertionError:
         print("AssertionError: the arguments are bad")
         exit(1)
@@ -87,13 +86,16 @@ def sos(string):
     print(result)
 
 
-if __name__ == "__main__":
-
+def main():
     try:
         assert len(sys.argv) == 2
 
     except AssertionError:
-        print("AssertionError: please provide one argument")
+        print("AssertionError: the arguments are bad")
         exit(1)
 
     sos(sys.argv[1])
+
+
+if __name__ == "__main__":
+    main()

@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import sys
 
 
@@ -41,8 +43,11 @@ def evaluate_str(eval_string):
     print(digit, "digits")
 
 
-if __name__ == "__main__":
-
+def main():
+    """
+        main function:
+            here, everything starts !
+    """
     try:
         assert len(sys.argv) == 2
         string = sys.argv[1]
@@ -50,3 +55,7 @@ if __name__ == "__main__":
         string = input("What is the text to count\n")
 
     evaluate_str(string)
+
+
+if __name__ == "__main__":
+    main()

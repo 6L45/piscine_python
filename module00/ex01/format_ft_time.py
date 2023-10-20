@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import time
 
 seconds_since_epoch = time.time()

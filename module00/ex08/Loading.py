@@ -20,15 +20,7 @@ def ft_tqdm(lst: range) -> None:
         print(">" if i != total else "", end="")
         print(" " * remains, end="")
         print("]|", end="")
-        print(f"{i}/{total:>2}", end="\r")
+        print(f" {i}/{total:>2}", end="\r")
 
         yield item
     print("")
-
-# if __name__ == "__main__":
-#     # example usage
-#     for _ in ft_tqdm(range(27)):
-#         time.sleep(0.1)
-#
-#     for _ in tqdm(range(10)):
-#         time.sleep(0.1)
