@@ -60,7 +60,10 @@ def aff_pop(df: pd.DataFrame, df2: pd.DataFrame):
         exit()
 
 
-if __name__ == "__main__":
-
+def main():
     aff_pop(load("life_expectancy_years.csv"),
             load("income_per_person_gdppercapita_ppp_inflation_adjusted.csv"))
+
+
+if __name__ == "__main__":
+    main()
