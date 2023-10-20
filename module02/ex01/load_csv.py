@@ -21,10 +21,13 @@ def load(path: str) -> pd.DataFrame:
     return df
 
 
-if __name__ == "__main__":
-
+def main():
     if len(sys.argv) != 2 or sys.argv[1].split(".")[-1] != "csv":
         print("bad arguments")
         exit()
 
     load(sys.argv[1])
+
+
+if __name__ == "__main__":
+    main()

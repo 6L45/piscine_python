@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import pandas as pd
 from matplotlib import pyplot as plt
 import matplotlib.ticker as mticker
@@ -41,6 +43,9 @@ def aff_life(df: pd.DataFrame):
         exit()
 
 
-if __name__ == "__main__":
-
+def main():
     aff_life(load("life_expectancy_years.csv"))
+
+
+if __name__ == "__main__":
+    main()
