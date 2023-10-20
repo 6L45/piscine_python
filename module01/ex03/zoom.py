@@ -1,3 +1,5 @@
+#! /bin/python3
+
 from matplotlib import pyplot as plt
 from PIL import Image
 from load_image import ft_load
@@ -22,9 +24,10 @@ def zoom(img_array, x1, y1, x2, y2, filename):
     plt.imshow(sliced_image)
     plt.show()
 
-
-if __name__ == "__main__":
-
+def main():
+    """
+        main function: where it starts
+    """
     y2 = 400
     x2 = 400
     y1 = 0
@@ -48,7 +51,7 @@ if __name__ == "__main__":
         print("height =", height, end=" ")
         print("| width =", width, end="\n")
 
-        print("\nif animal.jpeg -> subject ~= 400 900 100 500")
+        print("\nif animal.jpeg -> subject ~= 450 850 100 475")
         print(f"please enter: <x1> <x2> max {width - 1} \
 / <y1> <y2> max {height - 1}")
         user_input = ""
@@ -111,3 +114,6 @@ x1({x1}) / x2({x2})")
     except ValueError:
         print("out of range or bs entry")
         exit
+
+if __name__ == "__main__":
+    main()

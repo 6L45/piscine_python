@@ -34,26 +34,28 @@ def slice_me(family: list, start: int, end: int) -> list:
 #         [50, 51, 52, 53, 54, 55]
 #                                  ]
 
-# [:, 2:4] <-- from all row ( 1rst dimension [ ...   <--- first [
-#                                              ...
-#                                              ...
-#                                              ...
-#                                              ...
-#                                                  ] ) <-- to last ]
-#
-#                                                   only one dimension here
-#                                              but if several first slice level
+# 1rst parameter ':'
+# [:, 2:4] <-- On 1rst dimension from ALL row [ 
+#                                               [X ... ... ] <--- from first
+#                                               [X ... ... ]  /'\
+#                                               [X ... ... ]   |   ALL
+#                                               [X ... ... ]  \./
+#                                               [X ... ... ] <--- to last
+#                                                            ])
 
 
-# [:, 2:4] <-- 2:4 from index 2 to index 4 excluded so index 3 at 2nd lvl:
+# 2nd parameter '2:4'
+# [:, 2:4] <-- from index 2 to index 4 excluded so to index 3:
 #
 #   [10, 11, 12, 13, 14, 15] -> index 2 to 4(excluded) = [12, 13]
 
-# so result of arr slicing [:, 2:4]
+
+# result [:, 2:4] => all row from index 2 to 3 included
+# 
 #        [
-#         [12, 13]
-#         [22, 23]
-#         [32, 33]
-#         [42, 43]
-#         [52, 53]
-#                 ]
+#          [12, 13]
+#          [22, 23]
+#          [32, 33]
+#          [42, 43]
+#          [52, 53]
+#                   ]

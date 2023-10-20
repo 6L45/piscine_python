@@ -1,3 +1,5 @@
+#! /bin/python3
+
 from matplotlib import pyplot as plt
 from PIL import Image
 from load_image import ft_load
@@ -24,8 +26,7 @@ def zoom(img_array, x1, y1, x2, y2, filename, direct):
     plt.show()
 
 
-if __name__ == "__main__":
-
+def main():
     y2 = 400
     x2 = 400
     y1 = 0
@@ -43,13 +44,14 @@ if __name__ == "__main__":
             src = "animal.jpeg"
 
         img_data = ft_load(src)
+        img_data = img_data[::-1]
 
         height, width, channel = img_data.shape
         print()
         print("height =", height, end=" ")
         print("| width =", width, end="\n")
 
-        print("\nif animal.jpeg -> subject ~= 400 900 100 500")
+        print("\nif animal.jpeg -> subject ~= 450 850 275 675 right")
         print(f"please enter: <x1> <x2> max {width - 1} \
 / <y1> <y2> max {height - 1} / <direction> (right or left)")
         print("or enter dflt for default values")
@@ -125,3 +127,7 @@ x1({x1}) / x2({x2})")
     except ValueError:
         print("out of range or bs entry")
         exit()
+
+
+if __name__ == "__main__":
+    main()

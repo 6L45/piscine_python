@@ -1,18 +1,34 @@
+#! /bin/python3
+
 import numpy as np
 from PIL import Image
 from load_image import ft_load
 from matplotlib import pyplot as plt
 
 
-def invert_colors(img_array):
+def display(img):
+    if img.size > 0:
+        try:
+            plt.imshow(Image.fromarray(img))
+            plt.show()
+        except ValueError:
+            print("Et non gaston!")
+            exit(1)
+
+
+def ft_invert(img_array) -> np.array:
     """
-        Invert the colors of an image
+        Invert the colors of the image received.
     """
 
-    return 255 - img_array
+    new_array = img_array.copy()
+    new_array = 255 - new_array
+    display(new_array)
+
+    return (new_array)
 
 
-def red_tone(img_array):
+def ft_red(img_array) -> np.array:
     """
         Apply a red tone filter to an image
     """
@@ -20,10 +36,12 @@ def red_tone(img_array):
     new_array = img_array.copy()
     new_array[:, :, 1] = 0  # Set the green channel to 0
     new_array[:, :, 2] = 0  # Set the blue channel to 0
-    return new_array
+    display(new_array)
+
+    return (new_array)
 
 
-def blue_tone(img_array):
+def ft_blue(img_array) -> np.array:
     """
         Apply a blue tone filter to an image
     """
@@ -31,10 +49,12 @@ def blue_tone(img_array):
     new_array = img_array.copy()
     new_array[:, :, 0] = 0  # Set the red channel to 0
     new_array[:, :, 1] = 0  # Set the green channel to 0
-    return new_array
+    display(new_array)
+
+    return (new_array)
 
 
-def green_tone(img_array):
+def ft_green(img_array) -> np.array:
     """
     Apply a green tone filter to an image
     """
@@ -42,23 +62,31 @@ def green_tone(img_array):
     new_array = img_array.copy()
     new_array[:, :, 0] = 0  # Set the red channel to 0
     new_array[:, :, 2] = 0  # Set the blue channel to 0
-    return new_array
+    display(new_array)
+
+    return (new_array)
 
 
-def grayscale(img_array):
+def ft_grey(img_array) -> np.array:
     """
-    Convert an image to grayscale
+    Convert an image to ft_grey
     """
 
-    return np.dot(img_array[..., :3], [0.2989, 0.5870, 0.1140])
+    new_array = img_array.copy()
+    new_array = np.dot(new_array[..., :3], [0.2989, 0.5870, 0.1140])
+    display(new_array)
+
+    return (new_array)
 
 
-if __name__ == "__main__":
-
+def main():
+    """
+        that s the main
+    """
     try:
         src = input("please select an image\n")
         if src == "quit":
-            exit()
+            exit(0)
         if not src:
             src = "landscape.jpg"
 
@@ -66,41 +94,40 @@ if __name__ == "__main__":
 
         user_input = ""
         while 1:
-            user_input = input("<red> <green> <blue> <gray> <invert>\n")
+            user_input = input("<red>(r) <green>(g) <blue>(b) \
+<gray>(gs) <invert>(i)\n")
             if user_input == "quit":
-                print("\rquit")
-                exit()
+                exit(0)
             if not user_input:
                 print("please select a filter")
-                print("<red> <green> <blue> <gray> <invert>")
+                print("<red>(r) <green>(g) <blue>(b) <gray>(gs) <invert>(i)")
             elif len(user_input.split(" ")) > 1:
                 print("too many arguments")
             elif user_input not in ["red", "r", "green", "g", "blue", "b",
                                     "gray", "gs", "invert", "i"]:
                 print("bad arguments")
             else:
-                img = np.empty_like(img_data)
                 if user_input == "red" or user_input == "r":
-                    img = red_tone(img_data)
+                    ft_red(img_data)
 
                 if user_input == "green" or user_input == "g":
-                    img = green_tone(img_data)
+                    ft_green(img_data)
 
                 if user_input == "blue" or user_input == "b":
-                    img = blue_tone(img_data)
+                    ft_blue(img_data)
 
                 if user_input == "gray" or user_input == "gs":
-                    img = grayscale(img_data)
+                    ft_grey(img_data)
 
                 if user_input == "invert" or user_input == "i":
-                    img = invert_colors(img_data)
-
-                if img.size > 0:
-                    plt.imshow(Image.fromarray(img))
-                    plt.show()
+                    ft_invert(img_data)
 
     except (KeyboardInterrupt, EOFError):
         print("\rquit")
     except ValueError:
         print("Et non gaston!")
         exit()
+
+
+if __name__ == "__main__":
+    main()
